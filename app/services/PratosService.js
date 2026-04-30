@@ -13,7 +13,7 @@ let pratos = [
   5,
   "https://i.pravatar.cc/150?img=1"
 ),
-new PratoEntity(
+new PratosEntity(
   "2",
   "Hambúrguer Clássico",
   24.90,
@@ -21,7 +21,7 @@ new PratoEntity(
   4,
   "https://i.pravatar.cc/150?img=2"
 ),
-new PratoEntity(
+new PratosEntity(
   "3",
   "Salada Caesar",
   19.90,
@@ -31,21 +31,20 @@ new PratoEntity(
 ),
 ];
 
-export default class ContatoService {
+export default class PratosService {
 
   static async findAll() {
     const json = await AsyncStorage.getItem(STORAGE_KEY);
 
     if (json) {
       const lista = JSON.parse(json);
-      pratos = lista.map((item) => ContatoEntity.transforme(item));
+      pratos = lista.map((item) => PratosEntity.transforme(item));
       return [...pratos];
     }
 
     // primeira execução
-    //await this.saveAll(contatos);
-    //return [...contatos];
-    return [];
+    await this.saveAll(pratos);
+    return [...pratos];
   }
 
   static async findById(id) {
@@ -56,7 +55,7 @@ export default class ContatoService {
   static async save(prato) {
     const lista = await this.findAll();
 
-    const index = lista.findIndex((item) => item.id === contato.id);
+    const index = lista.findIndex((item) => item.id === prato.id);
 
     if (index >= 0) {
       lista[index] = prato;
