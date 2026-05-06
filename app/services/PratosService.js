@@ -38,7 +38,7 @@ export default class PratosService {
 
     if (json) {
       const lista = JSON.parse(json);
-      pratos = lista.map((item) => PratosEntity.transforme(item));
+      pratos = lista.map((item) => PratosEntity.fromApi(item));
       return [...pratos];
     }
 

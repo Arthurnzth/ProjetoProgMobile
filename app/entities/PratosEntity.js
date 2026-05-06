@@ -36,7 +36,7 @@ export default class PratosEntity {
         fotoDoPrato
     ) {
         const idNormalizado = normalizeId(id);
-        this.id = idNormalizado ?? newId();
+        this._id = idNormalizado ?? newId();
 
         this.nomeDoPrato = nomeDoPrato ?? '';
         this.valor = valor ?? '';
@@ -47,7 +47,7 @@ export default class PratosEntity {
 
     // opcional: id pronta para listas
     get id() {
-        return String(this.id);
+        return String(this._id);
     }
 
     // opcional: fábrica a partir do JSON da API
