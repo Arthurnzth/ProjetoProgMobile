@@ -46,6 +46,7 @@ export default function PratosListView(){
                 data={pratos}
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
+                showsVerticalScrollIndicator={true}
             />
         </View>
     );
