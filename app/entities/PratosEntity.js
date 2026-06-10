@@ -32,8 +32,10 @@ export default class PratosEntity {
         nomeDoPrato,
         valor,
         descricaoDoPrato,
+        preparo,
         rank,
-        fotoDoPrato
+        fotoDoPrato,
+        categoria
     ) {
         const idNormalizado = normalizeId(id);
         this._id = idNormalizado ?? newId();
@@ -41,8 +43,10 @@ export default class PratosEntity {
         this.nomeDoPrato = nomeDoPrato ?? '';
         this.valor = valor ?? '';
         this.descricaoDoPrato = descricaoDoPrato ?? '';
+        this.preparo = preparo ?? '';
         this.rank = rank ?? '';
         this.fotoDoPrato = fotoDoPrato;
+        this.categoria = categoria ?? 'comida';
     }
 
     // opcional: id pronta para listas
@@ -58,8 +62,10 @@ export default class PratosEntity {
             d?.nomeDoPrato ?? d?.name ?? d?.nome,
             d?.valor ?? d?.price,
             d?.descricaoDoPrato ?? d?.description ?? d?.descricao,
+            d?.preparo,
             d?.rank ?? d?.rating,
-            d?.fotoDoPrato ?? d?.image ?? d?.foto
+            d?.fotoDoPrato ?? d?.image ?? d?.foto,
+            d?.categoria
         );
     }
 }
